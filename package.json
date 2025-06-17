@@ -25,16 +25,16 @@
     "javascript",
     "browser"
   ],
-  "author": "Your Name",
+  "author": "OLGV.",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/monoink.git"
+    "url": "https://github.com/olgv/tool-monoink.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/monoink/issues"
+    "url": "https://github.com/olgv/tool-monoink/issues"
   },
-  "homepage": "https://github.com/yourusername/monoink#readme",
+  "homepage": "https://github.com/olgv/tool-monoink#readme",
   "engines": {
     "node": ">=12.0.0"
   },
