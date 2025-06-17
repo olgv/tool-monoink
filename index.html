@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>MonoInk.js - Demo</title>
+		<script src="./monoink.js"></script>
+		<style>
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+				line-height: 1.6;
+				margin: 0;
+				padding: 20px;
+				background-color: #ffffff;
+				height: 100vh;
+			}
+
+			.controls {
+				position: fixed;
+				top: 10px;
+				right: 10px;
+				background: rgba(0, 0, 0, 0.9);
+				color: #fff;
+				border-radius: 8px;
+				padding: 15px;
+				z-index: 10000;
+				min-width: 200px;
+				font-size: 14px;
+			}
+
+			.controls h3 {
+				margin: 0 0 15px 0;
+				font-size: 16px;
+				border-bottom: 1px solid #333;
+				padding-bottom: 8px;
+			}
+
+			.control-group {
+				margin-bottom: 12px;
+			}
+
+			.control-group label {
+				display: block;
+				margin-bottom: 6px;
+				font-weight: 500;
+			}
+
+			.control-group button {
+				width: 100%;
+				padding: 8px 12px;
+				border: none;
+				border-radius: 4px;
+				background: #0066cc;
+				color: white;
+				cursor: pointer;
+				font-size: 14px;
+				transition: background-color 0.2s;
+			}
+
+			.control-group button:hover {
+				background: #0052a3;
+			}
+
+			.control-group button.active {
+				background: #00cc66;
+			}
+
+			.control-group input[type="range"] {
+				width: 100%;
+				margin: 5px 0;
+			}
+
+			.control-group input[type="color"] {
+				width: 100%;
+				height: 35px;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+			}
+
+			.value-display {
+				font-family: 'Courier New', monospace;
+				color: #ccc;
+				font-size: 12px;
+			}
+
+			.demo-content {
+				max-width: 800px;
+				/* margin: 0 auto; */
+			}
+
+			.demo-section {
+				background: #f8f9fa;
+				padding: 20px;
+				margin: 20px 0;
+				border-radius: 6px;
+				border-left: 4px solid #007acc;
+			}
+
+
+
+			.retro-image {
+				max-width: 100%;
+				height: auto;
+				border: 2px solid #ccc;
+				margin: 10px 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="controls">
+			<h3>MonoInk Controls</h3>
+			
+			<div class="control-group">
+				<button id="toggle-pixelation">Enable Pixelation</button>
+			</div>
+
+			<div class="control-group">
+				<label for="pixelDensity">Pixel Density: <span class="value-display" id="pixelValue">0</span></label>
+				<input type="range" id="pixelDensity" min="1" max="100" value="1" step="1">
+			</div>
+
+			<div class="control-group">
+				<button id="toggle-dithering">Enable Dithering</button>
+			</div>
+
+			<div class="control-group">
+				<label for="ditherDensity">Dither Density: <span class="value-display" id="ditherValue">0</span></label>
+				<input type="range" id="ditherDensity" min="1" max="8" value="1" step="1">
+			</div>
+
+			<div class="control-group">
+				<button id="toggle-contrast">Enable High Contrast</button>
+			</div>
+
+			<div class="control-group">
+				<button id="toggle-backlight">Enable Backlight</button>
+			</div>
+
+			<div class="control-group">
+				<label for="colorPicker">Backlight Color:</label>
+				<input type="color" id="colorPicker" value="#ffa500">
+			</div>
+		</div>
+
+		<div class="demo-content">
+			<h1>MonoInk.js - Live Demo</h1>
+			<p>Render web content with a retro screen effect. Use the controls on the right to see the effects in action!</p>
+			
+			<div class="demo-section">
+				<h2>Quick Preview</h2>
+				<p>MonoInk applies authentic retro computer display effects:</p>
+				<ul>
+					<li><strong>Pixelation</strong> - Chunky, low-resolution blocks</li>
+					<li><strong>Dithering</strong> - Black/white dot patterns for grayscale simulation</li>
+					<li><strong>High Contrast</strong> - Pure black/white conversion</li>
+					<li><strong>Backlight</strong> - Vintage CRT monitor colors</li>
+				</ul>
+				<p><strong>Try it:</strong> Enable pixelation + dithering for the classic retro look!</p>
+			</div>
+
+			<div class="demo-section">
+				<h3>Sample Image</h3>
+				<p>See how effects are applied to images in real-time:</p>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Starlink_Mission_%2847926144123%29.jpg/640px-Starlink_Mission_%2847926144123%29.jpg" alt="Sample Image" crossorigin="anonymous" class="retro-image" />
+			</div>
+
+			<div class="demo-section">
+				<h3>Basic Usage</h3>
+				<pre><code>&lt;script src="monoink.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+const monoInk = new MonoInk({
+    pixelation: true,
+    pixelDensity: 4,
+    dithering: true
+});
+monoInk.render();
+&lt;/script&gt;</code></pre>
+				<p>See the <a href="README.md" target="_blank">README</a> for complete documentation and examples.</p>
+			</div>
+		</div>
+
+		<script>
+			// Initialize MonoInk with optimized settings
+			const monoInk = new MonoInk({
+				pixelDensity: 4,
+				ditherDensity: 1,
+				pixelation: false,
+				dithering: false,
+				backlight: false,
+				backlightColor: { r: 255, g: 165, b: 0 },
+				highContrast: false,
+			});
+
+			monoInk.render();
+
+			// Control elements
+			const pixelationBtn = document.getElementById('toggle-pixelation');
+			const pixelSlider = document.getElementById('pixelDensity');
+			const pixelValue = document.getElementById('pixelValue');
+			const ditherBtn = document.getElementById('toggle-dithering');
+			const ditherSlider = document.getElementById('ditherDensity');
+			const ditherValue = document.getElementById('ditherValue');
+			const contrastBtn = document.getElementById('toggle-contrast');
+			const backlightBtn = document.getElementById('toggle-backlight');
+			const colorPicker = document.getElementById('colorPicker');
+
+			// Pixelation toggle
+			pixelationBtn.addEventListener('click', () => {
+				const newState = !monoInk.pixelation;
+				monoInk.updateSettings({ pixelation: newState });
+				pixelationBtn.textContent = newState ? 'Disable Pixelation' : 'Enable Pixelation';
+				pixelationBtn.className = newState ? 'active' : '';
+
+				if (newState) {
+					// Jump slider to good default when enabling
+					const defaultValue = 4;
+					pixelSlider.value = defaultValue;
+					pixelValue.textContent = defaultValue;
+					monoInk.updateSettings({ pixelDensity: defaultValue });
+				} else {
+					// Set display value to 0 and slider to minimum when disabled
+					pixelValue.textContent = 0;
+					pixelSlider.value = pixelSlider.min;
+				}
+			});
+
+			// Pixel density control
+			pixelSlider.addEventListener('input', (e) => {
+				const value = parseInt(e.target.value);
+				pixelValue.textContent = value;
+				monoInk.updateSettings({ pixelDensity: value });
+				// Auto-enable pixelation when slider is used
+				if (!monoInk.pixelation) {
+					monoInk.updateSettings({ pixelation: true });
+					pixelationBtn.textContent = 'Disable Pixelation';
+					pixelationBtn.className = 'active';
+				}
+			});
+
+			// Dithering toggle
+			ditherBtn.addEventListener('click', () => {
+				const newState = !monoInk.dithering;
+				monoInk.updateSettings({ dithering: newState });
+				ditherBtn.textContent = newState ? 'Disable Dithering' : 'Enable Dithering';
+				ditherBtn.className = newState ? 'active' : '';
+				
+				if (newState) {
+					// Jump slider to good default when enabling
+					const defaultValue = 1;
+					ditherSlider.value = defaultValue;
+					ditherValue.textContent = defaultValue;
+					monoInk.updateSettings({ ditherDensity: defaultValue });
+				} else {
+					// Set display value to 0 and slider to minimum when disabled
+					ditherValue.textContent = 0;
+					ditherSlider.value = ditherSlider.min;
+				}
+			});
+
+			// Dither density control
+			ditherSlider.addEventListener('input', (e) => {
+				const value = parseInt(e.target.value);
+				ditherValue.textContent = value;
+				monoInk.updateSettings({ ditherDensity: value });
+				// Auto-enable dithering when slider is used
+				if (!monoInk.dithering) {
+					monoInk.updateSettings({ dithering: true });
+					ditherBtn.textContent = 'Disable Dithering';
+					ditherBtn.className = 'active';
+				}
+			});
+
+			// High contrast toggle
+			contrastBtn.addEventListener('click', () => {
+				const newState = !monoInk.highContrast;
+				monoInk.updateSettings({ highContrast: newState });
+				contrastBtn.textContent = newState ? 'Disable High Contrast' : 'Enable High Contrast';
+				contrastBtn.className = newState ? 'active' : '';
+			});
+
+			// Backlight toggle
+			backlightBtn.addEventListener('click', () => {
+				const newState = !monoInk.backlight;
+				monoInk.updateSettings({ backlight: newState });
+				backlightBtn.textContent = newState ? 'Disable Backlight' : 'Enable Backlight';
+				backlightBtn.className = newState ? 'active' : '';
+			});
+
+			// Color picker
+			colorPicker.addEventListener('input', (e) => {
+				const hex = e.target.value;
+				const r = parseInt(hex.slice(1, 3), 16);
+				const g = parseInt(hex.slice(3, 5), 16);
+				const b = parseInt(hex.slice(5, 7), 16);
+				
+				monoInk.updateSettings({ 
+					backlightColor: { r, g, b },
+					backlight: true 
+				});
+				backlightBtn.textContent = 'Disable Backlight';
+				backlightBtn.className = 'active';
+			});
+
+			// Initialize UI state
+			// No active states by default
+
+			// Cleanup on page unload
+			window.addEventListener('beforeunload', () => {
+				monoInk.destroy();
+			});
+		</script>
+	</body>
+</html>

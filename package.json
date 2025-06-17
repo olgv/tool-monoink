@@ -1,0 +1,43 @@
+{
+  "name": "monoink",
+  "version": "1.0.0",
+  "description": "A lightweight JavaScript library that applies authentic retro computer display effects to web content. Render any webpage with a retro screen effect using pixelation, dithering, high contrast, and backlight effects.",
+  "main": "monoink.js",
+  "files": [
+    "monoink.js",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"No build step required - library is vanilla JS\"",
+    "demo": "open index.html || xdg-open index.html"
+  },
+  "keywords": [
+    "retro",
+    "pixelation", 
+    "dithering",
+    "crt",
+    "vintage",
+    "screen-effects",
+    "computer-graphics",
+    "visual-effects",
+    "canvas",
+    "javascript",
+    "browser"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/monoink.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/monoink/issues"
+  },
+  "homepage": "https://github.com/yourusername/monoink#readme",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+} 
