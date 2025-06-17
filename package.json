@@ -1,6 +1,6 @@
 {
   "name": "monoink",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight JavaScript library that applies authentic retro computer display effects to web content. Render any webpage with a retro screen effect using pixelation, dithering, high contrast, and backlight effects.",
   "main": "monoink.js",
   "files": [
