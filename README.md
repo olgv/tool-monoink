@@ -38,6 +38,18 @@ npm install monoink
 import MonoInk from 'monoink';
 ```
 
+### Install from GitHub
+```bash
+# Install latest release
+npm install git+https://github.com/olgv/tool-monoink.git
+
+# Install specific version
+npm install git+https://github.com/olgv/tool-monoink.git#v1.0.0
+
+# Install from develop branch
+npm install git+https://github.com/olgv/tool-monoink.git#develop
+```
+
 ## Quick Start
 
 ### Render Entire Page
@@ -355,48 +367,9 @@ function cleanup() {
 }
 ```
 
-## Distribution Preparation
+## Demo
 
-This library is ready for distribution through multiple channels:
-
-### NPM Publishing
-```bash
-# Ensure you're logged in to NPM
-npm login
-
-# Publish to NPM registry
-npm publish
-```
-
-### Development Setup
-```bash
-# Clone the repository
-git clone <your-repo-url>
-cd monoink
-
-# Install development dependencies (none required)
-npm install
-
-# Run demo
-npm run demo
-```
-
-### File Structure for Distribution
-```
-monoink/
-├── monoink.js          # Main library file
-├── package.json        # NPM package configuration
-├── README.md          # Documentation
-└── index.html         # Demo file (not included in NPM package)
-```
-
-### Version Management
-Update version in `package.json` before publishing:
-```json
-{
-  "version": "1.0.1"
-}
-```
+You can see MonoInk.js in action by opening the included `index.html` file in your browser, or visit the online demo at: [GitHub Pages Demo](https://olgv.github.io/tool-monoink)
 
 ## License
 
@@ -404,8 +377,20 @@ MIT License - Feel free to use in personal and commercial projects.
 
 ## Contributing
 
-Contributions welcome! Please ensure:
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+### Development Setup
+```bash
+# Clone the repository
+git clone https://github.com/olgv/tool-monoink.git
+cd tool-monoink
+
+# No dependencies to install - pure vanilla JS!
+# Open index.html in your browser to test changes
+```
+
+### Guidelines
 - Code follows existing style
 - Performance optimizations are maintained
 - Cross-browser compatibility is preserved
-- Documentation is updated accordingly 
+- Test thoroughly before submitting 
